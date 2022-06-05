@@ -29,3 +29,10 @@ This script creates an universal operative system (Can be booted in almost all P
 If you want this in your usb/hdd, just run this ;D
 
 ![imagen](https://user-images.githubusercontent.com/67015742/172060125-ae1463eb-dadc-4039-a0c7-1577f62d1d54.png)
+
+
+# ALSO
+I made this script with a lot of effort.
+I would be so grateful if you fork/mention this repo instead of copypasting :D
+
+Hope this is going to be helpful to you
