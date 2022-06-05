@@ -145,7 +145,8 @@ sudo mkdir -p /mnt/home/$username/.cache
 sudo cp -r /tmp/dots/home/config /mnt/home/$username/.config
 sudo cp -r /tmp/dots/home/fondos /mnt/home/$username
 sudo cp -r /tmp/dots/home/powerlevel10k /mnt/home/$username
-sudo cp /tmp/dots/home/.* /mnt/home/$username
+sudo cp /tmp/dots/home/.zsh* /mnt/home/$username
+sudo cp /tmp/dots/home/.p10k.zsh /mnt/home/$username
 sudo cp -r /tmp/dots/home/wal /mnt/home/$username/.cache
 sudo arch-chroot /mnt chmod -R 777 /tmp/dots
 
