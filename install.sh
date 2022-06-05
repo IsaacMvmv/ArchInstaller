@@ -96,7 +96,7 @@ sudo arch-chroot /mnt useradd $username
 
 clear
 echo "Set $username passwd"
-sudo arch-chroot /mnt passwd isaac
+sudo arch-chroot /mnt passwd $username
 
 clear
 echo "Set root passwd"
