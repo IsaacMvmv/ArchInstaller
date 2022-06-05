@@ -2,6 +2,12 @@
 
 set -e
 
+if [ "$1" = "" ];then
+	clear
+	echo Run the script like: \"sh install.sh /dev/sdX\"
+	exit 1
+fi
+
 cd
 
 clear
