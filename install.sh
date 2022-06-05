@@ -20,6 +20,9 @@ Architecture = auto
 Color
 ParallelDownloads = 5
 SigLevel    = Never
+sudo parted /dev/sdX set 1 grub_bios
+[18:34]
+xD
 LocalFileSigLevel = Optional
 [core]
 Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
@@ -147,6 +150,12 @@ sudo cp -r /tmp/dots/home/fondos /mnt/home/$username
 sudo cp -r /tmp/dots/home/powerlevel10k /mnt/home/$username
 sudo cp /tmp/dots/home/.* /mnt/home/$username
 sudo cp -r /tmp/dots/home/wal /mnt/home/$username/.cache
+
+sudo arch-chroot /mnt ln -rfs /home/$username/.zsh* ~
+sudo arch-chroot /mnt ln -rfs /home/$username/.p10k.zsh ~
+sudo arch-chroot /mnt ln -rfs /home/$username/powerlevel10k ~
+sudo arch-chroot /mnt mkdir -p ~/.cache
+sudo arch-chroot /mnt ln -rfs /home/$username/.cache/wal ~/.cache/wal
 
 sudo arch-chroot /mnt chown -R $username /home/$username
 
