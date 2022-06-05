@@ -89,18 +89,30 @@ sudo arch-chroot /mnt hwclock --systohc
 sudo arch-chroot /mnt systemctl enable haveged NetworkManager ly
 sudo arch-chroot /mnt systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
-clear
-echo "How do you want to name your user:"
-read username
+username=$2
+if [ "$username" = "" ];then
+	clear
+	echo "How do you want to name your user:"
+	read username
+fi
+
 sudo arch-chroot /mnt useradd $username
 
-clear
-echo "Set $username passwd"
-sudo arch-chroot /mnt passwd $username
+if [ "$3" = "" ];then
+	clear
+	echo "Set $username passwd"
+	sudo arch-chroot /mnt passwd $username
+else
+	(echo "$3",echo "",echo "$3",echo "") | sudo arch-chroot /mnt passwd $username
+fi
 
-clear
-echo "Set root passwd"
-sudo arch-chroot /mnt passwd root
+if [ "$4" = "" ];then
+	clear
+	echo "Set root passwd"
+	sudo arch-chroot /mnt passwd root
+else
+	(echo "$4",echo "",echo "$4",echo "") | sudo arch-chroot /mnt passwd root
+fi
 
 sudo echo "%$username	ALL=(ALL:ALL) ALL" > $username 
 sudo mv $username /mnt/etc/sudoers.d/$username
@@ -136,26 +148,29 @@ sudo arch-chroot /mnt ln -rfs /home/$username/powerlevel10k /root
 sudo arch-chroot /mnt mkdir -p /root/.cache
 sudo arch-chroot /mnt ln -rfs /home/$username/.cache/wal /root/.cache/wal
 
-clear
-echo "Which language do you want: ES, EN, FR, NL"
-read es
-sudo touch /mnt/home/$username/.config/bspwm/bin/lang.sh
+es=$5
+if [ "$5" = "" ];then
+	clear
+	echo "Which language do you want: ES, EN, FR, NL"
+	read es
+	sudo touch /mnt/home/$username/.config/bspwm/bin/lang.sh
+fi
 if [ "$es" = "ES" ]; then
-		sudo echo "LANG=es_ES.UTF-8"> locale.conf
-		sudo echo "es_ES.UTF-8 UTF-8" > locale.gen
-		sudo echo "setxkbmap es" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+	sudo echo "LANG=es_ES.UTF-8"> locale.conf
+	sudo echo "es_ES.UTF-8 UTF-8" > locale.gen
+	sudo echo "setxkbmap es" > /mnt/home/$username/.config/bspwm/bin/lang.sh
 elif [ "$es" = "EN" ]; then
-		sudo echo "LANG=en_GB.UTF-8" > locale.conf
-		sudo echo "en_GB.UTF-8 UTF-8" > locale.gen
-		sudo echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+	sudo echo "LANG=en_GB.UTF-8" > locale.conf
+	sudo echo "en_GB.UTF-8 UTF-8" > locale.gen
+	sudo echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
 elif [ "$es" = "FR" ]; then
-		sudo echo "LANG=fr_FR.UTF-8" > locale.conf
-		sudo echo "fr_FR.UTF-8 UTF-8" > locale.gen
-		sudo echo "setxkbmap fr" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+	sudo echo "LANG=fr_FR.UTF-8" > locale.conf
+	sudo echo "fr_FR.UTF-8 UTF-8" > locale.gen
+	sudo echo "setxkbmap fr" > /mnt/home/$username/.config/bspwm/bin/lang.sh
 elif [ "$es" = "NL" ]; then
-		sudo echo "LANG=nl_NL.UTF-8" > locale.conf
-		sudo echo "nl_NL.UTF-8 UTF-8" > locale.gen
-		sudo echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+	sudo echo "LANG=nl_NL.UTF-8" > locale.conf
+	sudo echo "nl_NL.UTF-8 UTF-8" > locale.gen
+	sudo echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
 fi
 
 sudo chmod 777 /mnt/home/$username/.config/bspwm/bin/lang.sh
