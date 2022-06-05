@@ -165,6 +165,9 @@ sudo mv /tmp/lang.sh /mnt/home/$username/.config/bspwm/scripts/lang.sh
 sudo chmod 777 /mnt/home/$username/.config/bspwm/scripts/lang.sh
 sudo mv locale* /mnt/etc
 
+cd
+rm -rf /tmp/dots
+
 sudo arch-chroot /mnt locale-gen
 sudo arch-chroot /mnt chown -R $username /home/$username
 
