@@ -89,30 +89,20 @@ sudo arch-chroot /mnt hwclock --systohc
 sudo arch-chroot /mnt systemctl enable haveged NetworkManager ly
 sudo arch-chroot /mnt systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
-username=$2
-if [ "$username" = "" ];then
-	clear
-	echo "How do you want to name your user:"
-	read username
-fi
 
+clear
+echo "How do you want to name your user:"
+read username
 sudo arch-chroot /mnt useradd $username
 
-if [ "$3" = "" ];then
-	clear
-	echo "Set $username passwd"
-	sudo arch-chroot /mnt passwd $username
-else
-	(echo "$3",echo "",echo "$3",echo "") | sudo arch-chroot /mnt passwd $username
-fi
+clear
+echo "Set $username passwd"
+sudo arch-chroot /mnt passwd $username
 
-if [ "$4" = "" ];then
-	clear
-	echo "Set root passwd"
-	sudo arch-chroot /mnt passwd root
-else
-	(echo "$4",echo "",echo "$4",echo "") | sudo arch-chroot /mnt passwd root
-fi
+clear
+echo "Set root passwd"
+sudo arch-chroot /mnt passwd root
+
 
 sudo echo "%$username	ALL=(ALL:ALL) ALL" > $username 
 sudo mv $username /mnt/etc/sudoers.d/$username
@@ -148,12 +138,11 @@ sudo arch-chroot /mnt ln -rfs /home/$username/powerlevel10k /root
 sudo arch-chroot /mnt mkdir -p /root/.cache
 sudo arch-chroot /mnt ln -rfs /home/$username/.cache/wal /root/.cache/wal
 
-es=$5
-if [ "$5" = "" ];then
-	clear
-	echo "Which language do you want: ES, EN, FR, NL"
-	read es
-fi
+
+clear
+echo "Which language do you want: ES, EN, FR, NL"
+read es
+
 if [ "$es" = "ES" ]; then
 	sudo echo "LANG=es_ES.UTF-8"> locale.conf
 	sudo echo "es_ES.UTF-8 UTF-8" > locale.gen
