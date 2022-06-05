@@ -71,28 +71,6 @@ sudo arch-chroot /mnt wget https://github.com/IsaacMvmv/Stuff/releases/download/
 sudo arch-chroot /mnt pacman -U picom-jonaburg-git-0.1-5-x86_64.pkg.tar.zst
 sudo arch-chroot /mnt rm picom-jonaburg-git-0.1-5-x86_64.pkg.tar.zst
 
-clear
-echo "Which language do you want: ES, EN, FR, NL"
-read es
-	
-if [ "$es" = "ES" ]; then
-		echo "LANG=es_ES.UTF-8"> locale.conf
-		echo "es_ES.UTF-8 UTF-8" > locale.gen
-elif [ "$es" = "EN" ]; then
-		echo "LANG=en_GB.UTF-8" > locale.conf
-		echo "en_GB.UTF-8 UTF-8" > locale.gen
-elif [ "$es" = "FR" ]; then
-		echo "LANG=fr_FR.UTF-8" > locale.conf
-		echo "fr_FR.UTF-8 UTF-8" > locale.gen
-elif [ "$es" = "NL" ]; then
-		echo "LANG=nl_NL.UTF-8" > locale.conf
-		echo "nl_NL.UTF-8 UTF-8" > locale.gen
-fi
-
-sudo mv locale* /mnt/etc
-
-sudo arch-chroot /mnt locale-gen
-
 sudo cp -rf /etc/pacman* /mnt/etc
 
 clear
@@ -158,8 +136,33 @@ sudo arch-chroot /mnt ln -rfs /home/$username/powerlevel10k /root
 sudo arch-chroot /mnt mkdir -p /root/.cache
 sudo arch-chroot /mnt ln -rfs /home/$username/.cache/wal /root/.cache/wal
 
-sudo arch-chroot /mnt chown -R $username /home/$username
+clear
+echo "Which language do you want: ES, EN, FR, NL"
+read es
+	
+if [ "$es" = "ES" ]; then
+		echo "LANG=es_ES.UTF-8"> locale.conf
+		echo "es_ES.UTF-8 UTF-8" > locale.gen
+		echo "setxkbmap es" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+elif [ "$es" = "EN" ]; then
+		echo "LANG=en_GB.UTF-8" > locale.conf
+		echo "en_GB.UTF-8 UTF-8" > locale.gen
+		echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+elif [ "$es" = "FR" ]; then
+		echo "LANG=fr_FR.UTF-8" > locale.conf
+		echo "fr_FR.UTF-8 UTF-8" > locale.gen
+		echo "setxkbmap fr" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+elif [ "$es" = "NL" ]; then
+		echo "LANG=nl_NL.UTF-8" > locale.conf
+		echo "nl_NL.UTF-8 UTF-8" > locale.gen
+		echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+fi
 
+chmod 777 /mnt/home/$username/.config/bspwm/bin/lang.sh
+sudo mv locale* /mnt/etc
+
+sudo arch-chroot /mnt locale-gen
+sudo arch-chroot /mnt chown -R $username /home/$username
 
 sudo grub-install --target=x86_64-efi --recheck --removable --efi-directory=/mnt/boot/EFI --boot-directory=/mnt/boot
 sudo grub-install --target=i386-pc --recheck --removable --boot-directory=/mnt/boot $1
