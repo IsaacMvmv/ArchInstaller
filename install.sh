@@ -152,11 +152,11 @@ sudo cp /tmp/dots/home/.p10k.zsh /mnt/home/$username
 sudo cp -r /tmp/dots/home/wal /mnt/home/$username/.cache
 
 
-sudo arch-chroot /mnt ln -rfs /home/$username/.zsh* ~
-sudo arch-chroot /mnt ln -rfs /home/$username/.p10k.zsh ~
-sudo arch-chroot /mnt ln -rfs /home/$username/powerlevel10k ~
-sudo arch-chroot /mnt mkdir -p ~/.cache
-sudo arch-chroot /mnt ln -rfs /home/$username/.cache/wal ~/.cache/wal
+sudo arch-chroot /mnt ln -rfs /home/$username/.zsh* /root
+sudo arch-chroot /mnt ln -rfs /home/$username/.p10k.zsh /root
+sudo arch-chroot /mnt ln -rfs /home/$username/powerlevel10k /root
+sudo arch-chroot /mnt mkdir -p /root/.cache
+sudo arch-chroot /mnt ln -rfs /home/$username/.cache/wal /root/.cache/wal
 
 sudo arch-chroot /mnt chown -R $username /home/$username
 
