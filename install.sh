@@ -153,26 +153,26 @@ if [ "$5" = "" ];then
 	clear
 	echo "Which language do you want: ES, EN, FR, NL"
 	read es
-	sudo touch /mnt/home/$username/.config/bspwm/bin/lang.sh
 fi
 if [ "$es" = "ES" ]; then
 	sudo echo "LANG=es_ES.UTF-8"> locale.conf
 	sudo echo "es_ES.UTF-8 UTF-8" > locale.gen
-	sudo echo "setxkbmap es" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+	sudo echo "setxkbmap es" > /tmp/lang.sh
 elif [ "$es" = "EN" ]; then
 	sudo echo "LANG=en_GB.UTF-8" > locale.conf
 	sudo echo "en_GB.UTF-8 UTF-8" > locale.gen
-	sudo echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+	sudo echo "" > /tmp/lang.sh
 elif [ "$es" = "FR" ]; then
 	sudo echo "LANG=fr_FR.UTF-8" > locale.conf
 	sudo echo "fr_FR.UTF-8 UTF-8" > locale.gen
-	sudo echo "setxkbmap fr" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+	sudo echo "setxkbmap fr" > /tmp/lang.sh
 elif [ "$es" = "NL" ]; then
 	sudo echo "LANG=nl_NL.UTF-8" > locale.conf
 	sudo echo "nl_NL.UTF-8 UTF-8" > locale.gen
-	sudo echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+	sudo echo "" > /tmp/lang.sh
 fi
 
+sudo mv /tmp/lang.sh /mnt/home/$username/.config/bspwm/bin/
 sudo chmod 777 /mnt/home/$username/.config/bspwm/bin/lang.sh
 sudo mv locale* /mnt/etc
 
