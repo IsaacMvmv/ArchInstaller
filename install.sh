@@ -25,7 +25,7 @@ LocalFileSigLevel = Optional
 Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
 
 [extra]
-Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
+Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/Bos/$arch
 
 [community]
 Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
@@ -138,6 +138,8 @@ sudo wget https://github.com/IsaacMvmv/Stuff/releases/download/pkgs/customs.zip
 sudo unzip customs.zip
 sudo rm customs.zip
 
+sudo chmod -R 777 /tmp/dots
+
 sudo echo "/home/$username/background.jpg" > /tmp/wal
 sudo mv /tmp/wal /tmp/dots/home/wal/wal
 sudo cp -r /tmp/dots/usr/share/* /mnt/usr/share/
@@ -148,7 +150,7 @@ sudo cp -r /tmp/dots/home/powerlevel10k /mnt/home/$username
 sudo cp /tmp/dots/home/.zsh* /mnt/home/$username
 sudo cp /tmp/dots/home/.p10k.zsh /mnt/home/$username
 sudo cp -r /tmp/dots/home/wal /mnt/home/$username/.cache
-sudo arch-chroot /mnt chmod -R 777 /tmp/dots
+
 
 sudo arch-chroot /mnt ln -rfs /home/$username/.zsh* ~
 sudo arch-chroot /mnt ln -rfs /home/$username/.p10k.zsh ~
