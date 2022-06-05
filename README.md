@@ -11,6 +11,9 @@ An arch-based os as host
 ```
 sh install.sh /dev/sdX
 ```
+Just tell him the drive, and let it go, man
+
+
 X is a, b, c, etc...
 
 You can know the letter using:
