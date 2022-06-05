@@ -76,17 +76,17 @@ echo "Which language do you want: ES, EN, FR, NL"
 read es
 	
 if [ "$es" = "ES" ]; then
-		echo "LANG=es_ES.UTF-8 UTF-8"> locale.conf
-		echo es_ES.UTF-8 > locale.gen
+		echo "LANG=es_ES.UTF-8"> locale.conf
+		echo "es_ES.UTF-8 UTF-8" > locale.gen
 elif [ "$es" = "EN" ]; then
-		echo "LANG=en_GB.UTF-8 UTF-8" > locale.conf
-		echo en_GB.UTF-8 > locale.gen
+		echo "LANG=en_GB.UTF-8" > locale.conf
+		echo "en_GB.UTF-8 UTF-8" > locale.gen
 elif [ "$es" = "FR" ]; then
-		echo "LANG=fr_FR.UTF-8 UTF-8" > locale.conf
-		echo fr_FR.UTF-8 > locale.gen
+		echo "LANG=fr_FR.UTF-8" > locale.conf
+		echo "fr_FR.UTF-8 UTF-8" > locale.gen
 elif [ "$es" = "NL" ]; then
-		echo "LANG=nl_NL.UTF-8 UTF-8" > locale.conf
-		echo nl_NL.UTF-8 > locale.gen
+		echo "LANG=nl_NL.UTF-8" > locale.conf
+		echo "nl_NL.UTF-8 UTF-8" > locale.gen
 fi
 
 sudo mv locale* /mnt/etc
