@@ -161,8 +161,8 @@ sudo arch-chroot /mnt ln -rfs /home/$username/.cache/wal /root/.cache/wal
 sudo arch-chroot /mnt chown -R $username /home/$username
 
 
-sudo arch-chroot /mnt update-grub
 sudo grub-install --target=x86_64-efi --recheck --removable --efi-directory=/mnt/boot/EFI --boot-directory=/mnt/boot
 sudo grub-install --target=i386-pc --recheck --removable --boot-directory=/mnt/boot $1
+sudo arch-chroot /mnt update-grub
 
 sudo umount -R /mnt
