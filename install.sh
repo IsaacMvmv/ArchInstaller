@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -139,26 +139,26 @@ sudo arch-chroot /mnt ln -rfs /home/$username/.cache/wal /root/.cache/wal
 clear
 echo "Which language do you want: ES, EN, FR, NL"
 read es
-	
+sudo touch /mnt/home/$username/.config/bspwm/bin/lang.sh
 if [ "$es" = "ES" ]; then
-		echo "LANG=es_ES.UTF-8"> locale.conf
-		echo "es_ES.UTF-8 UTF-8" > locale.gen
-		echo "setxkbmap es" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+		sudo echo "LANG=es_ES.UTF-8"> locale.conf
+		sudo echo "es_ES.UTF-8 UTF-8" > locale.gen
+		sudo echo "setxkbmap es" > /mnt/home/$username/.config/bspwm/bin/lang.sh
 elif [ "$es" = "EN" ]; then
-		echo "LANG=en_GB.UTF-8" > locale.conf
-		echo "en_GB.UTF-8 UTF-8" > locale.gen
-		echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+		sudo echo "LANG=en_GB.UTF-8" > locale.conf
+		sudo echo "en_GB.UTF-8 UTF-8" > locale.gen
+		sudo echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
 elif [ "$es" = "FR" ]; then
-		echo "LANG=fr_FR.UTF-8" > locale.conf
-		echo "fr_FR.UTF-8 UTF-8" > locale.gen
-		echo "setxkbmap fr" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+		sudo echo "LANG=fr_FR.UTF-8" > locale.conf
+		sudo echo "fr_FR.UTF-8 UTF-8" > locale.gen
+		sudo echo "setxkbmap fr" > /mnt/home/$username/.config/bspwm/bin/lang.sh
 elif [ "$es" = "NL" ]; then
-		echo "LANG=nl_NL.UTF-8" > locale.conf
-		echo "nl_NL.UTF-8 UTF-8" > locale.gen
-		echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
+		sudo echo "LANG=nl_NL.UTF-8" > locale.conf
+		sudo echo "nl_NL.UTF-8 UTF-8" > locale.gen
+		sudo echo "" > /mnt/home/$username/.config/bspwm/bin/lang.sh
 fi
 
-chmod 777 /mnt/home/$username/.config/bspwm/bin/lang.sh
+sudo chmod 777 /mnt/home/$username/.config/bspwm/bin/lang.sh
 sudo mv locale* /mnt/etc
 
 sudo arch-chroot /mnt locale-gen
