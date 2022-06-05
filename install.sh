@@ -147,6 +147,7 @@ sudo cp -r /tmp/dots/home/fondos /mnt/home/$username
 sudo cp -r /tmp/dots/home/powerlevel10k /mnt/home/$username
 sudo cp /tmp/dots/home/.* /mnt/home/$username
 sudo cp -r /tmp/dots/home/wal /mnt/home/$username/.cache
+sudo arch-chroot /mnt chmod -R 777 /tmp/dots
 
 sudo arch-chroot /mnt ln -rfs /home/$username/.zsh* ~
 sudo arch-chroot /mnt ln -rfs /home/$username/.p10k.zsh ~
