@@ -162,7 +162,7 @@ elif [ "$es" = "NL" ]; then
 fi
 
 sudo mv /tmp/lang.sh /mnt/home/$username/.config/bspwm/scripts/lang.sh
-sudo chmod 777 /mnt/home/$username/.config/bspwm/bin/lang.sh
+sudo chmod 777 /mnt/home/$username/.config/bspwm/scripts/lang.sh
 sudo mv locale* /mnt/etc
 
 sudo arch-chroot /mnt locale-gen
