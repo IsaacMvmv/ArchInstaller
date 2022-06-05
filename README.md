@@ -14,12 +14,6 @@ sh install.sh /dev/sdX
 ```
 Just tell him the drive, and let it go, man
 
-An optional way is to run: 
-```
-sh install.sh /dev/sdX username userpasswd rootpasswd LANG
-```
-Lang must be ES/EN/FR/NL
-
 X is a, b, c, etc...
 
 You can know the letter using:
