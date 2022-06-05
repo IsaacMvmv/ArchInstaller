@@ -68,7 +68,7 @@ clear
 echo "Old pacman config restored."
 
 sudo arch-chroot /mnt wget https://github.com/IsaacMvmv/Stuff/releases/download/pkgs/picom-jonaburg-git-0.1-5-x86_64.pkg.tar.zst
-sudo arch-chroot /mnt pacman -U picom-jonaburg-git-0.1-5-x86_64.pkg.tar.zst
+sudo arch-chroot /mnt pacman -U --noconfirm picom-jonaburg-git-0.1-5-x86_64.pkg.tar.zst
 sudo arch-chroot /mnt rm picom-jonaburg-git-0.1-5-x86_64.pkg.tar.zst
 
 sudo cp -rf /etc/pacman* /mnt/etc
