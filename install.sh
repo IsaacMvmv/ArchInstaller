@@ -52,8 +52,8 @@ sudo mkfs.vfat -F32 $1\2
 sudo mkswap $1\3
 sudo mkfs.btrfs -f $1\4
 
-(echo "") | sudo parted $1 set 1 grub_bios
-(echo "") | sudo parted $1 set 4 boot
+(echo "") | sudo parted $1 set 1 bios_grub on
+(echo "") | sudo parted $1 set 4 boot on
 
 sudo mount $1\4 /mnt
 sudo mkdir -p /mnt/boot
