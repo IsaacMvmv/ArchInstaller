@@ -22,13 +22,13 @@ ParallelDownloads = 5
 SigLevel    = Never
 LocalFileSigLevel = Optional
 [core]
-Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
+Server = https://mirror.pkgbuild.com/$repo/os/$arch
 
 [extra]
-Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/Bos/$arch
+Server = https://mirror.pkgbuild.com/$repo/os/$arch
 
 [community]
-Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
+Server = https://mirror.pkgbuild.com/$repo/os/$arch
 
 [chaotic-aur]
 Server = https://geo-mirror.chaotic.cx/$repo/$arch' > pacman.conf
