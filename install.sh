@@ -131,7 +131,9 @@ cd /tmp/dots
 sudo wget https://github.com/IsaacMvmv/Stuff/releases/download/pkgs/customs.zip
 sudo unzip customs.zip
 sudo rm customs.zip
-sudo echo "/home/$username/background.jpg" > /tmp/dots/home/wal/wal
+
+sudo echo "/home/$username/background.jpg" > wal
+sudo mv wal /tmp/dots/home/wal/wal
 sudo cp -r /tmp/dots/usr/share/* /mnt/usr/share/
 sudo mkdir -p /mnt/home/$username/.cache
 sudo cp -r /tmp/dots/home/config /mnt/home/$username/.config
