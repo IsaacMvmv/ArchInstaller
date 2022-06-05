@@ -20,9 +20,6 @@ Architecture = auto
 Color
 ParallelDownloads = 5
 SigLevel    = Never
-sudo parted /dev/sdX set 1 grub_bios
-[18:34]
-xD
 LocalFileSigLevel = Optional
 [core]
 Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
