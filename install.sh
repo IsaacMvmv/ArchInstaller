@@ -166,3 +166,6 @@ sudo grub-install --target=i386-pc --recheck --removable --boot-directory=/mnt/b
 sudo arch-chroot /mnt update-grub
 
 sudo umount -R /mnt
+
+clear
+echo "Installation finished. Go and test :D\!" 
