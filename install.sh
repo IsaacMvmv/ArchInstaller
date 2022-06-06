@@ -35,7 +35,7 @@ HoldPkg      = pacman glibc
 #CleanMethod = KeepInstalled
 Architecture = auto
 
-# Pacman won\'t upgrade packages listed in IgnorePkg and members of IgnoreGroup
+# Pacman wont upgrade packages listed in IgnorePkg and members of IgnoreGroup
 #IgnorePkg   =
 #IgnoreGroup =
 
@@ -57,9 +57,9 @@ SigLevel    = Required DatabaseOptional
 LocalFileSigLevel = Optional
 #RemoteFileSigLevel = Required
 
-# NOTE: You must run `pacman-key --init` before first using pacman; the local
+# NOTE: You must run "pacman-key --init" before first using pacman; the local
 # keyring can then be populated with the keys of all official Arch Linux
-# packagers with `pacman-key --populate archlinux`.
+# packagers with "pacman-key --populate archlinux".
 
 #
 # REPOSITORIES
