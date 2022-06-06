@@ -76,10 +76,11 @@ sudo cp -rf /etc/pacman* /mnt/etc
 clear
 echo "How do you want to call the hostname?"
 read htname
-sudo arch-chroot /mnt hostnamectl set-hostname $htname
+sudo echo $htname > hostname
+sudo mv hostname /mnt/etc/hostname
 
 sudo swapon $1\3
-sudo genfstab -U /mnt >> fstab
+sudo genfstab -U /mnt > fstab
 sudo mv fstab /mnt/etc/fstab
 sudo swapoff $1\3
 
