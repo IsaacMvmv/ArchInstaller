@@ -12,24 +12,109 @@ cd
 
 clear
 
-sudo echo '[options]
-HoldPkg     = pacman glibc
+sudo echo '#
+# /etc/pacman.conf
+#
+# See the pacman.conf(5) manpage for option and repository directives
+
+#
+# GENERAL OPTIONS
+#
+[options]
+# The following paths are commented out with their default values listed.
+# If you wish to use different paths, uncomment and update the paths.
+#RootDir     = /
+#DBPath      = /var/lib/pacman/
+CacheDir = /var/cache/pacman/pkg/
+#LogFile     = /var/log/pacman.log
+#GPGDir      = /etc/pacman.d/gnupg/
+#HookDir     = /etc/pacman.d/hooks/
+HoldPkg      = pacman glibc
+#XferCommand = /usr/bin/curl -L -C - -f -o %o %u
+#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+#CleanMethod = KeepInstalled
 Architecture = auto
+
+# Pacman won\'t upgrade packages listed in IgnorePkg and members of IgnoreGroup
+#IgnorePkg   =
+#IgnoreGroup =
+
+#NoUpgrade   =
+#NoExtract   =
+
+# Misc options
+#UseSyslog
 Color
+#NoProgressBar
+CheckSpace
+#VerbosePkgLists
+ILoveCandy
 ParallelDownloads = 5
-SigLevel    = Never
+
+# By default, pacman accepts packages signed by keys that its local keyring
+# trusts (see pacman-key and its man page), as well as unsigned packages.
+SigLevel    = Required DatabaseOptional
 LocalFileSigLevel = Optional
+#RemoteFileSigLevel = Required
+
+# NOTE: You must run `pacman-key --init` before first using pacman; the local
+# keyring can then be populated with the keys of all official Arch Linux
+# packagers with `pacman-key --populate archlinux`.
+
+#
+# REPOSITORIES
+#   - can be defined here or included from another file
+#   - pacman will search repositories in the order defined here
+#   - local/custom mirrors can be added here or in separate files
+#   - repositories listed first will take precedence when packages
+#     have identical names, regardless of version number
+#   - URLs will have $repo replaced by the name of the current repo
+#   - URLs will have $arch replaced by the name of the architecture
+#
+# Repository entries are of the format:
+#       [repo-name]
+#       Server = ServerName
+#       Include = IncludePath
+#
+# The header [repo-name] is crucial - it must be present and
+# uncommented to enable the repo.
+#
+
+# The testing repositories are disabled by default. To enable, uncomment the
+# repo name header and Include lines. You can add preferred servers immediately
+# after the header, and they will be used before the default mirrors.
+
+#[testing]
+#Include = /etc/pacman.d/mirrorlist
+
 [core]
-Server = https://mirror.pkgbuild.com/$repo/os/$arch
+Include = /etc/pacman.d/mirrorlist
 
 [extra]
-Server = https://mirror.pkgbuild.com/$repo/os/$arch
+Include = /etc/pacman.d/mirrorlist
+
+#[community-testing]
+#Include = /etc/pacman.d/mirrorlist
 
 [community]
-Server = https://mirror.pkgbuild.com/$repo/os/$arch
+Include = /etc/pacman.d/mirrorlist
+
+#[multilib-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist
 
 [chaotic-aur]
-Server = https://geo-mirror.chaotic.cx/$repo/$arch' > /tmp/pacman.conf
+#SigLevel = Never
+Include = /etc/pacman.d/chaotic-mirrorlist
+
+[blackarch]
+Include = /etc/pacman.d/blackarch-mirrorlist
+
+[jlk]
+SigLevel = Never
+Server = https://jlk.fjfi.cvut.cz/arch/repo' > /tmp/pacman.conf
 
 
 sudo pacman -Sy
@@ -57,13 +142,13 @@ sudo mkdir -p /mnt/boot
 sudo mount $1\2 /mnt/boot
 sudo mkdir -p /mnt/boot/EFI
 
-sudo pacstrap -C /tmp/pacman.conf /mnt acpi alacritty alsa-card-profiles alsa-lib alsa-plugins alsa-topology-conf alsa-ucm-conf alsa-utils amd-ucode intel-ucode arch-install-scripts sudo archlinux-keyring base chaotic-keyring cmus bat bc binutils bluez bluez-libs brightnessctl bspwm btrfs-progs bzip2 tar unzip zip unrar ccache coreutils cpio create_ap curl discord dkms dosfstools dunst efibootmgr efivar elfutils fd feh file filesystem firefox flameshot fmt fuse-common fuse3 fuse2 fzf gamemode git glava glib-networking glib2 glibc glibmm glslang gnu-netcat gnupg gnutls gparted gptfdisk grep grub grub-customizer gtk-engines gtk-engine-murrine gtk-update-icon-cache gtk3 gtk2 gtkglext gtkmm3 gvfs gvfs-afc gzip haveged htop hwdata hwloc imagemagick inetutils iptables iproute2 iputils itstool iw jack2 jdk-openjdk libaio libao libappindicator-gtk3 linux-tkg-cfs linux-tkg-cfs-headers linux-api-headers linux-firmware lsb-release lsd lxappearance ly mesa-tkg-git mkinitcpio mkinitcpio-busybox mpg123 nano neofetch ncurses net-tools network-manager-applet networkmanager nm-connection-editor ntfs-3g openal openssh openssl pacman pacman-contrib pacman-mirrorlist chaotic-mirrorlist parted paru pavucontrol pciutils polybar pulseaudio pulseaudio-alsa pulseaudio-bluetooth rofi schedtool seabios sed simplescreenrecorder sublime-text-4 systemd systemd-libs systemd-sysvcompat tar thunar sxhkd translate-shell udisks2 update-grub unrar unzip util-linux util-linux-libs v4l-utils vlc vulkan-icd-loader vulkan-tools wget which wireless_tools wmctrl wpa_supplicant xarchiver xdotool xorg-drivers xfce4-taskmanager xfce4-terminal xfsprogs xkeyboard-config xorg-server xorg-server-common xorg-setxkbmap xorg-xauth xorg-xinit xorg-xkbcomp xorg-xmessage xorg-xrandr xorg-xsetroot xorgproto zip zlib zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting zstd
+sudo pacstrap -C /tmp/pacman.conf /mnt acpi alacritty alsa-card-profiles alsa-lib alsa-plugins alsa-topology-conf alsa-ucm-conf alsa-utils amd-ucode intel-ucode arch-install-scripts sudo blackarch-keyring archlinux-keyring base chaotic-keyring cmus bat bc binutils bluez bluez-libs brightnessctl bspwm btrfs-progs bzip2 tar unzip zip unrar ccache coreutils cpio create_ap curl discord dkms dosfstools dunst efibootmgr efivar elfutils fd feh file filesystem firefox flameshot fmt fuse-common fuse3 fuse2 fzf gamemode git glava glib-networking glib2 glibc glibmm glslang gnu-netcat gnupg gnutls gparted gptfdisk grep grub grub-customizer gtk-engines gtk-engine-murrine gtk-update-icon-cache gtk3 gtk2 gtkglext gtkmm3 gvfs gvfs-afc gzip haveged htop hwdata hwloc imagemagick inetutils iptables iproute2 iputils itstool iw jack2 jdk-openjdk libaio libao libappindicator-gtk3 linux-tkg-cfs linux-tkg-cfs-headers linux-api-headers linux-firmware lsb-release lsd lxappearance ly mesa-tkg-git mkinitcpio mkinitcpio-busybox mpg123 nano neofetch ncurses net-tools network-manager-applet networkmanager nm-connection-editor ntfs-3g openal openssh openssl pacman pacman-contrib pacman-mirrorlist chaotic-mirrorlist parted paru pavucontrol pciutils polybar pulseaudio pulseaudio-alsa pulseaudio-bluetooth rofi schedtool seabios sed simplescreenrecorder sublime-text-4 systemd systemd-libs systemd-sysvcompat tar thunar sxhkd translate-shell udisks2 update-grub unrar unzip util-linux util-linux-libs v4l-utils vlc vulkan-icd-loader vulkan-tools wget which wireless_tools wmctrl wpa_supplicant xarchiver xdotool xorg-drivers xfce4-taskmanager xfce4-terminal xfsprogs xkeyboard-config xorg-server xorg-server-common xorg-setxkbmap xorg-xauth xorg-xinit xorg-xkbcomp xorg-xmessage xorg-xrandr xorg-xsetroot xorgproto zip zlib zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting zstd
 
 sudo arch-chroot /mnt wget https://github.com/IsaacMvmv/Stuff/releases/download/pkgs/picom-jonaburg-git-0.1-5-x86_64.pkg.tar.zst
 sudo arch-chroot /mnt pacman -U --noconfirm picom-jonaburg-git-0.1-5-x86_64.pkg.tar.zst
 sudo arch-chroot /mnt rm picom-jonaburg-git-0.1-5-x86_64.pkg.tar.zst
 
-sudo cp -rf /etc/pacman* /mnt/etc
+sudo cp -rf /tmp/pacman.conf /mnt/etc
 
 clear
 echo "How do you want to call the hostname?"
