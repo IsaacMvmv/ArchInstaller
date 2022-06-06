@@ -166,7 +166,15 @@ sudo arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 sudo arch-chroot /mnt hwclock --systohc
 sudo arch-chroot /mnt systemctl enable haveged NetworkManager ly
 sudo arch-chroot /mnt systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-
+sudo echo 'Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+    Option "TappingButtonMap" "lmr"
+    Option "NaturalScrolling" "true"
+EndSection' > 30-touchpad.conf
+sudo mv 30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf
 
 clear
 echo "How do you want to name your user:"
