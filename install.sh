@@ -93,6 +93,7 @@ sudo arch-chroot /mnt systemctl mask sleep.target suspend.target hibernate.targe
 
 clear
 echo "How do you want to name your user:"
+echo "Capital letters causes an error, dont use them"
 read username
 sudo arch-chroot /mnt useradd $username
 
