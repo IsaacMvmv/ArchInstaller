@@ -107,7 +107,7 @@ Include = /etc/pacman.d/mirrorlist
 
 [chaotic-aur]
 #SigLevel = Never
-Include = /etc/pacman.d/chaotic-mirrorlist
+Server = https://repo.jkanetwork.com/repo/chaotic-aur/chaotic-aur/x86_64
 
 [blackarch]
 Include = /etc/pacman.d/blackarch-mirrorlist
