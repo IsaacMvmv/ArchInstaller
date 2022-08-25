@@ -119,7 +119,7 @@ Server = https://jlk.fjfi.cvut.cz/arch/repo' > /tmp/pacman.conf
 
 
 sudo pacman -Sy
-sudo pacman -S --needed arch-install-scripts parted
+sudo pacman -S --needed arch-install-scripts parted wget
 
 
 sudo parted --script $1 mklabel gpt
