@@ -128,7 +128,7 @@ sudo parted --script $1 mkpart primary fat32 0% 150M
 sudo parted --script $1 mkpart primary btrfs 150M 100%
 
 
-(echo r; echo h; echo 1 2 3; echo N; echo EF02; echo N; echo ""; echo N;echo ""; echo Y; echo x; echo h; echo w; echo Y) | sudo gdisk $1
+(echo r; echo h; echo 1 2; echo N; echo 83; echo N;echo ""; echo Y; echo x; echo h; echo w; echo Y) | sudo gdisk $1
 
 sudo mkfs.vfat -F32 $1\1
 sudo mkfs.btrfs -f $1\2
