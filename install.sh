@@ -118,8 +118,7 @@ SigLevel = Never
 Server = https://jlk.fjfi.cvut.cz/arch/repo' > /tmp/pacman.conf
 
 
-sudo pacman --config /tmp/pacman.conf -Sy
-sudo pacman -S --needed arch-install-scripts parted wget archlinux-keyring blackarch-keyring chaotic-keyring
+sudo pacman --config /tmp/pacman.conf -Sy --needed arch-install-scripts parted wget archlinux-keyring blackarch-keyring chaotic-keyring
 sudo pacman -Sy
 
 
