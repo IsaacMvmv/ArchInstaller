@@ -166,7 +166,7 @@ sudo swapoff $1\3
 sudo arch-chroot /mnt pacman -Scc
 sudo arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 sudo arch-chroot /mnt hwclock --systohc
-sudo arch-chroot /mnt systemctl enable haveged NetworkManager ly
+sudo arch-chroot /mnt systemctl enable haveged NetworkManager
 sudo arch-chroot /mnt systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 sudo echo 'Section "InputClass"
     Identifier "touchpad"
