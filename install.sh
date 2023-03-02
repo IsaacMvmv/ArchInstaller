@@ -106,15 +106,12 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/mirrorlist
 
 [chaotic-aur]
-SigLevel = Never
 Server = https://repo.jkanetwork.com/repo/chaotic-aur/chaotic-aur/x86_64
 
 [blackarch]
-SigLevel = Never
 Server = http://mirror.cyberbits.eu/blackarch/$repo/os/$arch
 
 [jlk]
-SigLevel = Never
 Server = https://jlk.fjfi.cvut.cz/arch/repo' > /tmp/pacman.conf
 
 
