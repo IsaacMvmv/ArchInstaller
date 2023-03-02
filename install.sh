@@ -112,6 +112,7 @@ Server = https://repo.jkanetwork.com/repo/chaotic-aur/chaotic-aur/x86_64
 Server = http://mirror.cyberbits.eu/blackarch/$repo/os/$arch
 
 [jlk]
+SigLevel = Never
 Server = https://jlk.fjfi.cvut.cz/arch/repo' > /tmp/pacman.conf
 
 sudo pacman -Sy --needed arch-install-scripts parted wget archlinux-keyring
