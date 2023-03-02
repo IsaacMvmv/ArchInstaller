@@ -115,7 +115,7 @@ Server = http://mirror.cyberbits.eu/blackarch/$repo/os/$arch
 SigLevel = Never
 Server = https://jlk.fjfi.cvut.cz/arch/repo' > /tmp/pacman.conf
 
-sudo pacman -Sy --needed arch-install-scripts parted wget archlinux-keyring
+sudo pacman -Sy --needed arch-install-scripts parted wget archlinux-keyring unzip
 
 wget https://archmirror.it/repos/core/os/x86_64/archlinux-keyring-20230225-1-any.pkg.tar.zst
 wget https://repo.jkanetwork.com/repo/chaotic-aur/chaotic-aur/x86_64/chaotic-keyring-20220803-1-any.pkg.tar.zst
