@@ -154,10 +154,8 @@ read htname
 sudo echo $htname > hostname
 sudo mv hostname /mnt/etc/hostname
 
-sudo swapon $1\3
 sudo genfstab -U /mnt > fstab
 sudo mv fstab /mnt/etc/fstab
-sudo swapoff $1\3
 
 sudo arch-chroot /mnt pacman -Scc
 sudo arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
