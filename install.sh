@@ -114,10 +114,12 @@ Server = http://mirror.cyberbits.eu/blackarch/$repo/os/$arch
 [jlk]
 Server = https://jlk.fjfi.cvut.cz/arch/repo' > /tmp/pacman.conf
 
+wget https://repo.jkanetwork.com/repo/chaotic-aur/chaotic-aur/x86_64/chaotic-keyring-20220803-1-any.pkg.tar.zst
+wget http://mirror.cyberbits.eu/blackarch/blackarch/os/x86_64/blackarch-keyring-20180925-5-any.pkg.tar.zst
+pacman -U chaotic-keyring-20220803-1-any.pkg.tar.zst blackarch-keyring-20180925-5-any.pkg.tar.zst
+rm chaotic-keyring-20220803-1-any.pkg.tar.zst blackarch-keyring-20180925-5-any.pkg.tar.zst
 
-sudo pacman --config /tmp/pacman.conf -Sy 
-sudo pacman --config /tmp/pacman.conf -S --needed arch-install-scripts parted wget archlinux-keyring blackarch-keyring chaotic-keyring
-sudo pacman -Sy
+sudo pacman -Sy --needed arch-install-scripts parted wget archlinux-keyring
 
 
 sudo parted --script $1 mklabel gpt
