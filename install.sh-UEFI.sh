@@ -265,7 +265,16 @@ sudo rm -rf /tmp/dots
 sudo arch-chroot /mnt locale-gen
 sudo arch-chroot /mnt chown -R $username /home/$username
 
+
+UUID=$(blkid | grep btrfs | awk '{print $2}')
+echo "
+\"Arch Linux         \" \"root=$UUID rw add_efi_memmap loglevel=3 net.ifnames=0 biosdevname=0\"
+\"Arch Linux Fallback\" \"root=$UUID rw add_efi_memmap initrd=/initramfs-linux-fallback.img net.ifnames=0 biosdevname=0\"
+\"Arch Linux Terminal\" \"root=$UUID rw add_efi_memmap systemd.unit=multi-user.target net.ifnames=0 biosdevname=0\"" > refind_linux.conf
+sudo mv refind_linux.conf /mnt/boot/refind_linux.conf
+
 sudo arch-chroot /mnt refind-install
+
 sudo efibootmgr --create --disk $1 --part 1 --loader /EFI/refind/refind_x64.efi --label "rEFInd Boot Manager" --unicode
 
 sudo umount -R /mnt
