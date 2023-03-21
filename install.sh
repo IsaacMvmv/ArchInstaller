@@ -125,8 +125,8 @@ rm archlinux-keyring-20230225-1-any.pkg.tar.zst chaotic-keyring-20220803-1-any.p
 
 sudo parted --script $1 mklabel gpt
 sudo parted --script $1 mkpart primary 0% 1M
-sudo parted --script $1 mkpart primary fat32 1M 101M
-sudo parted --script $1 mkpart primary linux-swap 101M 2601M
+sudo parted --script $1 mkpart primary fat32 1M 151M
+sudo parted --script $1 mkpart primary linux-swap 151M 2601M
 sudo parted --script $1 mkpart primary btrfs 2601M 100%
 
 
