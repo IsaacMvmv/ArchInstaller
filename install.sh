@@ -117,10 +117,12 @@ Server = https://jlk.fjfi.cvut.cz/arch/repo' > /tmp/pacman.conf
 
 sudo pacman -Sy --needed arch-install-scripts parted wget archlinux-keyring unzip
 
-wget https://repo.jkanetwork.com/repo/chaotic-aur/chaotic-aur/x86_64/chaotic-keyring-20220803-1-any.pkg.tar.zst
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
+sudo pacman -U https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst
 wget http://mirror.cyberbits.eu/blackarch/blackarch/os/x86_64/blackarch-keyring-20180925-5-any.pkg.tar.zst
-sudo pacman -U chaotic-keyring-20220803-1-any.pkg.tar.zst blackarch-keyring-20180925-5-any.pkg.tar.zst
-rm chaotic-keyring-20220803-1-any.pkg.tar.zst blackarch-keyring-20180925-5-any.pkg.tar.zst
+sudo pacman -U blackarch-keyring-20180925-5-any.pkg.tar.zst
+rm blackarch-keyring-20180925-5-any.pkg.tar.zst
 
 sudo parted --script $1 mklabel gpt
 sudo parted --script $1 mkpart primary 0% 1M
