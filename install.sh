@@ -119,9 +119,9 @@ sudo pacman -Sy --needed arch-install-scripts parted wget archlinux-keyring unzi
 
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
-sudo pacman -U https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst
+sudo pacman -U https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst --needed
 wget http://mirror.cyberbits.eu/blackarch/blackarch/os/x86_64/blackarch-keyring-20180925-5-any.pkg.tar.zst
-sudo pacman -U blackarch-keyring-20180925-5-any.pkg.tar.zst
+sudo pacman -U blackarch-keyring-20180925-5-any.pkg.tar.zst --needed
 rm blackarch-keyring-20180925-5-any.pkg.tar.zst
 
 sudo parted --script $1 mklabel gpt
